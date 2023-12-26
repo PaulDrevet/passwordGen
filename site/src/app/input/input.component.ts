@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
+import {SharedService} from "../shared.service";
 
 @Component({
   selector: 'app-input',
@@ -11,11 +12,14 @@ import {NgOptimizedImage} from "@angular/common";
   styleUrl: './input.component.css'
 })
 export class InputComponent {
+  constructor(private sharedService: SharedService) { }
+  placeholder = this.sharedService.getSharedVariable();
 
-  placeholder = '3WIAI9I427fHtRH';
+
 
   randomize(): void{
     this.placeholder = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    this.sharedService.setSharedVariable(this.placeholder);
   }
 
 }

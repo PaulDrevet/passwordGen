@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import {SharedService} from "../shared.service";
 
@@ -11,10 +11,12 @@ import {SharedService} from "../shared.service";
   templateUrl: './input.component.html',
   styleUrl: './input.component.css'
 })
-export class InputComponent {
+export class InputComponent implements OnInit {
   constructor(private sharedService: SharedService) { }
-  placeholder = this.sharedService.getSharedVariable();
-
+  placeholder = "";
+  ngOnInit() {
+    this.randomize();
+  }
 
 
   randomize(): void{

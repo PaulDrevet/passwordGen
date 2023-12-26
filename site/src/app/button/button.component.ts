@@ -14,5 +14,6 @@ export class ButtonComponent {
 
   copy(): void{
     console.log(this.sharedService.getSharedVariable());
+    navigator.clipboard.writeText(this.sharedService.getSharedVariable()).then(r => alert("Copied to clipboard!"));
     }
 }

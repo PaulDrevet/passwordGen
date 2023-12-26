@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SharedService {
-  private sharedVariable = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  private sharedVariable = "";
 
   getSharedVariable(): string {
     return this.sharedVariable;

@@ -14,14 +14,38 @@ import {SharedService} from "../shared.service";
 export class InputComponent implements OnInit {
   constructor(private sharedService: SharedService) { }
   placeholder = "";
+
+  special : string = "!@#$%^&*()_+{}|:<>?~";
+  numbers : string = "0123456789";
+  uppercase : string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  lowercase : string = "abcdefghijklmnopqrstuvwxyz";
+
   ngOnInit() {
     this.randomize();
   }
 
-
   randomize(): void{
-    this.placeholder = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    let length : number = this.sharedService.getSharedLength();
+    let s : boolean = this.sharedService.getSharedSpecial();
+    let n : boolean = this.sharedService.getSharedNumbers();
+    let u : boolean = this.sharedService.getSharedUppercase();
+    let l : boolean = this.sharedService.getSharedLowercase();
+
+    let possible : string = "";
+    if(s) possible += this.special;
+    if(n) possible += this.numbers;
+    if(u) possible += this.uppercase;
+    if(l) possible += this.lowercase;
+
+    let newPass : string = "";
+
+    console.log(length);
+
+    for (let i = 0; i < length; i++) {
+      newPass += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    this.placeholder = newPass;
     this.sharedService.setSharedPassword(this.placeholder);
   }
-
 }

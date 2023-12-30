@@ -1,5 +1,13 @@
-<mat-slider min="1" max="20" step="1" discrete >
-  <input matSliderThumb [(ngModel)]=sliderValue>
+<mat-slider min="1" max="20" step="1" discrete>
+  <input matSliderThumb [(ngModel)]="sliderValue" (ngModelChange)="onSliderChange()">
 </mat-slider>
 
-<p>Selected value: {{ sliderValue }}</p>
+<div class="mt-16">
+  <mat-checkbox [(ngModel)]="special" (ngModelChange)="onSpecialChange()">Special characters !&#64;#$%^&*</mat-checkbox>
+
+  <mat-checkbox [(ngModel)]="numbers" (ngModelChange)="onNumbersChange()">Numbers 0-9</mat-checkbox>
+
+  <mat-checkbox [(ngModel)]="uppercase" (ngModelChange)="onUppercaseChange()">Uppercase A-Z</mat-checkbox>
+
+  <mat-checkbox [(ngModel)]="lowercase" (ngModelChange)="onLowercaseChange()">Lowercase a-z</mat-checkbox>
+</div>

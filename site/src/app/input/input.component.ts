@@ -22,6 +22,14 @@ export class InputComponent implements OnInit {
   lowercase : string = "abcdefghijklmnopqrstuvwxyz";
 
   ngOnInit() {
+    // S'abonner aux changements
+    this.sharedService.length$.subscribe(() => this.randomize());
+    this.sharedService.special$.subscribe(() => this.randomize());
+    this.sharedService.numbers$.subscribe(() => this.randomize());
+    this.sharedService.uppercase$.subscribe(() => this.randomize());
+    this.sharedService.lowercase$.subscribe(() => this.randomize());
+
+    // Initialiser avec la valeur actuelle
     this.randomize();
   }
 

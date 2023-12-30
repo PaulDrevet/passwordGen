@@ -28,23 +28,23 @@ export class OptionsComponent {
 
   onSliderChange() {
     console.log(this.sliderValue)
-    this.sharedService.setSharedLength(this.sliderValue);
+    this.sharedService.setLength(this.sliderValue);
   }
 
   onSpecialChange() {
-    this.sharedService.setSharedSpecial(this.special);
+    this.sharedService.setSpecial(this.special);
   }
 
   onNumbersChange() {
-    this.sharedService.setSharedNumbers(this.numbers);
+    this.sharedService.setNumbers(this.numbers);
   }
 
   onUppercaseChange() {
-    this.sharedService.setSharedUppercase(this.uppercase);
+    this.sharedService.setUppercase(this.uppercase);
   }
 
   onLowercaseChange() {
-    this.sharedService.setSharedLowercase(this.lowercase);
+    this.sharedService.setLowercase(this.lowercase);
   }
 
 }

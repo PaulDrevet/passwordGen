@@ -1,61 +1,73 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class SharedService {
-  private sharedPassword = "";
-  private sharedLength = 10;
-  private sharedSpecial = false;
-  private sharedNumbers = true;
-  private sharedUppercase = true;
-  private sharedLowercase = true;
+  private lengthSubject = new BehaviorSubject<number>(10);
+  private specialSubject = new BehaviorSubject<boolean>(false);
+  private numbersSubject = new BehaviorSubject<boolean>(true);
+  private uppercaseSubject = new BehaviorSubject<boolean>(true);
+  private lowercaseSubject = new BehaviorSubject<boolean>(true);
+  private passwordSubject = new BehaviorSubject<string>("");
 
-  getSharedPassword(): string {
-    return this.sharedPassword;
+  // Expose Observables
+  length$ = this.lengthSubject.asObservable();
+  special$ = this.specialSubject.asObservable();
+  numbers$ = this.numbersSubject.asObservable();
+  uppercase$ = this.uppercaseSubject.asObservable();
+  lowercase$ = this.lowercaseSubject.asObservable();
+  password$ = this.passwordSubject.asObservable();
+
+  // Expose methods to update values
+  setLength(value: number): void {
+    this.lengthSubject.next(value);
+  }
+
+  setSpecial(value: boolean): void {
+    this.specialSubject.next(value);
+  }
+
+  setNumbers(value: boolean): void {
+    this.numbersSubject.next(value);
+  }
+
+  setUppercase(value: boolean): void {
+    this.uppercaseSubject.next(value);
+  }
+
+  setLowercase(value: boolean): void {
+    this.lowercaseSubject.next(value);
   }
 
   setSharedPassword(value: string): void {
-    this.sharedPassword = value;
+    this.passwordSubject.next(value);
   }
 
+  // Expose methods to get values
   getSharedLength(): number {
-    return this.sharedLength;
-  }
-
-  setSharedLength(value: number): void {
-    this.sharedLength = value;
+    return this.lengthSubject.getValue();
   }
 
   getSharedSpecial(): boolean {
-    return this.sharedSpecial;
-  }
-
-  setSharedSpecial(value: boolean): void {
-    this.sharedSpecial = value;
+    return this.specialSubject.getValue();
   }
 
   getSharedNumbers(): boolean {
-    return this.sharedNumbers;
-  }
-
-  setSharedNumbers(value: boolean): void {
-    this.sharedNumbers = value;
+    return this.numbersSubject.getValue();
   }
 
   getSharedUppercase(): boolean {
-    return this.sharedUppercase;
-  }
-
-  setSharedUppercase(value: boolean): void {
-    this.sharedUppercase = value;
+    return this.uppercaseSubject.getValue();
   }
 
   getSharedLowercase(): boolean {
-    return this.sharedLowercase;
+    return this.lowercaseSubject.getValue();
   }
 
-  setSharedLowercase(value: boolean): void {
-    this.sharedLowercase = value;
+  getSharedPassword(): string {
+    return this.passwordSubject.getValue();
   }
+
 }

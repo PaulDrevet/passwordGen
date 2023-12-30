@@ -21,7 +21,7 @@ export class InputComponent implements OnInit {
 
   randomize(): void{
     this.placeholder = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    this.sharedService.setSharedVariable(this.placeholder);
+    this.sharedService.setSharedPassword(this.placeholder);
   }
 
 }

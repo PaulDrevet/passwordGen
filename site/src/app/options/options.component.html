@@ -1,3 +1,5 @@
-<mat-slider min="1" max="5" step="0.5" value="1.5">
-  <input matSliderThumb>
+<mat-slider min="1" max="20" step="1" discrete >
+  <input matSliderThumb [(ngModel)]=sliderValue>
 </mat-slider>
+
+<p>Selected value: {{ sliderValue }}</p>

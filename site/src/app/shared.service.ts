@@ -4,13 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SharedService {
-  private sharedVariable = "";
+  private sharedPassword = "";
+  private sharedLength = 0;
 
-  getSharedVariable(): string {
-    return this.sharedVariable;
+  getSharedPassword(): string {
+    return this.sharedPassword;
   }
 
-  setSharedVariable(value: string): void {
-    this.sharedVariable = value;
+  setSharedPassword(value: string): void {
+    this.sharedPassword = value;
   }
 }

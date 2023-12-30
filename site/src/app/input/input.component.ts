@@ -12,6 +12,7 @@ import {SharedService} from "../shared.service";
   styleUrl: './input.component.css'
 })
 export class InputComponent implements OnInit {
+
   constructor(private sharedService: SharedService) { }
   placeholder = "";
 

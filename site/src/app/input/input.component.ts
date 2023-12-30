@@ -23,7 +23,7 @@ export class InputComponent implements OnInit {
 
   ngOnInit() {
     // S'abonner aux changements
-    this.sharedService.length$.subscribe(() => this.randomize());
+    this.sharedService.length$.subscribe(() => this.randomize2());
     this.sharedService.special$.subscribe(() => this.randomize());
     this.sharedService.numbers$.subscribe(() => this.randomize());
     this.sharedService.uppercase$.subscribe(() => this.randomize());
@@ -34,6 +34,31 @@ export class InputComponent implements OnInit {
   }
 
   randomize(): void{
+    let length : number = this.sharedService.getSharedLength();
+    let s : boolean = this.sharedService.getSharedSpecial();
+    let n : boolean = this.sharedService.getSharedNumbers();
+    let u : boolean = this.sharedService.getSharedUppercase();
+    let l : boolean = this.sharedService.getSharedLowercase();
+
+    let possible : string = "";
+    if(s) possible += this.special;
+    if(n) possible += this.numbers;
+    if(u) possible += this.uppercase;
+    if(l) possible += this.lowercase;
+
+    let newPass : string = "";
+
+    console.log(length);
+
+    for (let i = 0; i < length; i++) {
+      newPass += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    this.placeholder = newPass;
+    this.sharedService.setSharedPassword(this.placeholder);
+  }
+
+  randomize2(): void{
     let length : number = this.sharedService.getSharedLength();
     let s : boolean = this.sharedService.getSharedSpecial();
     let n : boolean = this.sharedService.getSharedNumbers();

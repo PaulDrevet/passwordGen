@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import {SharedService} from "../shared.service";
+import {delay} from "rxjs";
 
 @Component({
   selector: 'app-input',
@@ -11,15 +12,21 @@ import {SharedService} from "../shared.service";
   templateUrl: './input.component.html',
   styleUrl: './input.component.css'
 })
+
 export class InputComponent implements OnInit {
+
 
   constructor(private sharedService: SharedService) { }
   placeholder = "";
+
 
   special : string = "!@#$%^&*()_+{}|:<>?~";
   numbers : string = "0123456789";
   uppercase : string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   lowercase : string = "abcdefghijklmnopqrstuvwxyz";
+
+
+
 
   ngOnInit() {
     // S'abonner aux changements
@@ -52,6 +59,8 @@ export class InputComponent implements OnInit {
 
     for (let i = 0; i < length; i++) {
       newPass += possible.charAt(Math.floor(Math.random() * possible.length));
+      this.placeholder = newPass;
+
     }
 
     this.placeholder = newPass;

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "site": {
+    "passwordGen": {
       "projectType": "application",
       "schematics": {},
       "root": "",
